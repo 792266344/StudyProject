@@ -1,6 +1,6 @@
 import 'dart:ffi';
 
-import 'package:linkedlist/binarytree.dart';
+import 'package:linkedlist/sortbinarytree.dart';
 import '../lib/linkedlist.dart';
 
 void main() {
@@ -11,5 +11,5 @@ void main() {
   tree.add(1);
   tree.add(3);
   tree.add(8);
-  tree.postorder();
+  print(tree.contains(0));
 }
