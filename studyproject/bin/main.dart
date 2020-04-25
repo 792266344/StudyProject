@@ -12,4 +12,5 @@ void main() {
   tree.add(3);
   tree.add(8);
   print(tree.contains(0));
+  tree.preorder();
 }

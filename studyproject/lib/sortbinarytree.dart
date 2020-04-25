@@ -1,8 +1,12 @@
+typedef  quanzhong<L,R> = bool Function(L,R);
+
 class BinaryTree<T> {
   BinaryTreeNode _root = BinaryTreeNode<T>();
   int size = 0;
   int steps = 0;
+
   BinaryTree();
+
   void add(T data) {
     BinaryTreeNode _node = _root;
     BinaryTreeNode res;
@@ -12,7 +16,7 @@ class BinaryTree<T> {
       _root.data = data;
     else {
       while (true) {
-        if (_node.data > data) {
+        if (_node.data>data) {
           if (_node.leftchild == null) {
             res = _node;
             _left = true;
@@ -35,27 +39,52 @@ class BinaryTree<T> {
     size++;
   }
 
-  bool contains(T data){
+  BinaryTreeNode _findNode(T data){
     BinaryTreeNode _node = _root;
-    bool exist=false;
     while(true){
       if (_node.data > data) {
           if (_node.leftchild == null) {
-            exist=false;
-            break;
+            throw Exception("The Element Doesn't Exist");
           } else
             _node = _node.leftchild;
         } else if(_node.data<data){
           if (_node.rightchild == null) {
-            exist = false;
-            break;
+            throw Exception("The Element Doesn't Exist");
           } else
             _node = _node.rightchild;
         } else {
-          exist=true;break;
+          return _node;
         }
-    }return exist;
+    }
   }
+
+  bool contains(T data){
+    try{
+      _findNode(data);
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  void delete(T data){
+    BinaryTreeNode _node=_findNode(data);
+    BinaryTreeNode _limit=_findMin(_node);
+    _node=_limit;
+    _limit=null;
+    
+  }
+
+  BinaryTreeNode _findMin(BinaryTreeNode node){
+    BinaryTreeNode _node=node.leftchild;
+    while(true){
+      if(_node==null) return null;
+      if(_node.leftchild==null)return _node;
+      _node=_node.leftchild;
+    }
+  }
+
+  BinaryTreeNode _findMax(BinaryTreeNode node){}
 
   void preorder() => _preorder(_root);
 
