@@ -2,6 +2,15 @@
 ///如下，实例化飞机和实例化飞机轮子都属于飞机，所以都赋予飞机工厂，公交车亦同
 ///抽象工厂的缺点是打破了开闭原则，及对扩展开发，对修改关闭，抽象工厂模式如果要增加新的产品实例化，将会涉及到修改接口
 ///如下，假如现添加实例化飞机翅膀，那么就需要向 Factory 和 PlaneFactory 添加实例化翅膀方法
+///
+///```
+///Factory f = PlaneFactory()
+///Car bus = f.takeCar();
+///Whell whell = f.takeWhell();
+///print(bus.go());
+///print(whell.roll());
+///```
+///
 
 
 abstract class Car {
